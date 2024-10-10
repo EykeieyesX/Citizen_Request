@@ -1,0 +1,1393 @@
+:root {
+    --color-text: #0b0c18; /* Text color for light mode */
+    --color-background: #ffffff; /* Light mode background color */
+    --color-background-lighter: #f4f4f4; /* Lighter background for sections */
+    --color-primary: #191d67; /* Primary color */
+    --color-secondary: #757be6; /* Secondary color */
+    --color-accent: #141db8; /* Accent color */
+    --color-white: #fff; /* White color */
+    --color-dark: #121212; /* Dark mode background */
+    --color-header: #000000; /* Header color for light mode */
+    --color-light: rgba(132, 139, 200, 0.18); /* Light color for shadows */
+    --color-dark-variant: #677483; /* Dark variant color */
+    --box-shadow: 0 2rem 3rem var(--color-light); /* Box shadow */
+    
+    --bg-color: #ffffff; /* Default background color for light mode */
+    --heading-color-h1: #000000; /* h1 Heading color for light mode (black) */
+    --heading-color-h2: #1d1c1c; /* h2 Heading color for light mode (black) */
+    --text-color: #333333; /* Text color for light mode */
+}
+
+
+.dark-mode {
+    --color-text: #e0e0e0; /* Text color for dark mode */
+    --color-header: #ffffff; /* Header color for dark mode */
+    --color-background: #080917; /* Dark mode background color */
+    --color-primary: #989ce6; /* Dark mode primary color */
+    --color-secondary: #191f8a; /* Dark mode secondary color */
+    --color-accent: #4750eb; /* Dark mode accent color */
+    --heading-color-h1: #ffffff; /* h1 Heading color for dark mode (white) */
+    --heading-color-h2: #000000; /* h2 Heading color for dark mode (black) */
+    
+    background-color: var(--color-dark); /* Background for dark mode */
+    color: var(--color-text); /* Text color for dark mode */
+}
+
+
+* {
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    border: 0;
+    text-decoration: none;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 24px;
+}
+
+body {
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins';
+    font-size: 0.88rem;
+    user-select: none;
+    overflow-x: hidden;
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+a { 
+    color: var(--color-text);
+}
+
+.img {
+    display: block;
+    width: 100%;
+    object-fit: cover;
+}
+
+h1 {
+    font-weight: 800;
+    font-size: 1.8rem;
+}
+
+h2 {
+    font-weight: 600;
+    font-size: 1.4rem;
+}
+
+h3 {
+    font-weight: 500;
+    font-size: 0.87rem;
+}
+
+small {
+    font-size: 0.76rem;
+}
+
+p {
+    color: var(--color-background);
+}
+
+b {
+    color: var(--color-background);
+}
+
+.primary {
+    color: var(--color-primary);
+}
+
+.container {
+    display: flex;
+    width: 96%;
+    margin: 0 auto;
+    gap: 1.8rem;
+    grid-template-columns: 12rem auto 23rem;
+    position: relative;
+}
+
+/* Sidebar styles */
+aside {
+    height: 100vh;
+    transition: all 0.3s ease;
+    position: sticky;  /* Makes the sidebar stick to the screen */
+    top: 0;  /* Ensure it sticks at the top of the viewport */
+}
+
+aside.minimized {
+    width: 4rem; 
+}
+
+aside.minimized .logo h2, 
+aside.minimized .sidebar h3 {
+    display: none; 
+}
+
+aside.minimized .sidebar a {
+    margin-left: 0; 
+    justify-content: center; 
+    padding-left: 0;
+}
+
+aside.minimized .sidebar a span {
+    font-size: 2rem; 
+}
+
+aside .toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 1.4rem;
+}
+
+aside .toggle .logo {
+    display: flex;
+    gap: 0.5rem;
+}
+
+aside .toggle .logo img {
+    width: 2rem;
+    height: 2rem;
+}
+
+aside .toggle .close {
+    padding-left: 5rem;
+    cursor: pointer; 
+    color: var(--color-text);
+}
+
+aside .sidebar {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    background-color: var(--color-background);
+    box-shadow: var(--box-shadow);
+    border-radius: 10px;
+    height: 88vh;
+    transition: all 0.3s ease;
+    /* Removed position relative and top, since position sticky handles this */
+}
+
+aside .sidebar a {
+    display: flex;
+    align-items: center;
+    color: var(--color-text);
+    height: 4rem;
+    gap: 1rem;
+    position: relative;
+    margin-left: 2rem;
+    transition: all 0.3s ease;
+    justify-content: flex-start;
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+    transition: all 0.3s ease;
+}
+
+aside .sidebar a.active {
+    width: 100%;
+    color: var(--color-primary);
+    background: var(--color-light);
+    margin-left: 0;
+}
+
+aside .sidebar a.active::before {
+    content: '';
+    width: 6px;
+    height: 18px;
+    background-color: var(--color-primary-dark);
+}
+
+aside .sidebar a.active span {
+    color: var(--color-accent);
+    margin-left: calc(1rem - 3px);
+}
+
+aside .sidebar a:hover {
+    color: var(--color-primary);
+}
+
+aside .sidebar a:hover span {
+    margin-left: 0.6rem;
+}
+
+
+
+/* Footer */
+
+footer {
+    background-color: var(--color-background-lighter);
+    color: var(--color-text);
+    padding: 0.5rem;
+    text-align: center;
+    border-top: 1px solid var(--color-dark-variant);
+}
+
+.footer-content {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.footer-links {
+    list-style: none;
+    padding: 0;
+    margin: 0.02rem 0 0;
+}
+
+.footer-links li {
+    display: inline;
+    margin-right: 1rem;
+}
+
+.footer-links a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.footer-links a:hover {
+    text-decoration: underline;
+}
+
+/* Signup Button styles */
+.signup-btn {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--color-primary);
+    color: #fff;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 1001;
+}
+
+
+
+.signup-btn:hover {
+    background-color: darken(var(--color-primary), 10%);
+}
+
+/* Wrapper */
+.wrapper {
+    position: fixed;
+    width: 400px;
+    height: 440px;
+    background: transparent;
+    border: 2px solid rgba(255, 255, 255, .5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, .5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    opacity: 0;  
+    visibility: hidden; 
+    transform: scale(0.7);  
+    transition: all 0.5s ease;
+    z-index: 100;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.7); 
+}
+
+
+.wrapper.active-popup {
+    opacity: 1;  
+    visibility: visible;  
+    transform: translate(-50%, -50%) scale(1);  
+}
+
+.wrapper.active {
+    height: 650px;
+}
+
+.wrapper .form-box {
+    width: 100%;
+    padding: 40px;
+}
+
+.wrapper .form-box.login {
+    transition: transform 0.50s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login {
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.wrapper .form-box.register {
+    position: absolute;
+    transition: none;
+    transform: translateX(400px); 
+}
+
+.wrapper.active .form-box.register {
+    transition: transform 0.50s ease;
+    transform: translateX(0);
+}
+
+.wrapper .icon-close {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: var(--color-primary);
+    font-size: 2em;
+    color: var(--color-background-lighter);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.form-box h2 {
+    font-size: 2em;
+    color: var(--color-primary);
+    text-align: center;
+}
+
+/* Can adjust the form box */
+
+.input-box {
+    position: relative;
+    width: 100%;
+    height: 40px;
+    border-bottom: 2px solid var(--color-primary);
+    margin: 30px 0;
+}
+
+.input-box label {
+    position: absolute;
+    top: 50%;
+    left: 5px;
+    transform: translateY(-50%);
+    font-size: 1em;
+    color: var(--color-primary);
+    font-weight: 500;
+    pointer-events: none;
+    transition: .5s;
+}
+
+.input-box input:focus~label,
+.input-box input:valid~label {
+    top: -5px;
+    
+}
+
+.input-box input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: var(--color-primary);
+    font-weight: 600;
+    padding: 0 45px 0 5px;
+}
+
+.input-box .icon {
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: var(--color-primary);
+    line-height: 57px;
+}
+
+.remember-forgot {
+    font-size: .9em;
+    color: var(--color-primary);
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input {
+    accent-color: #fff;
+    margin-right: 3px;
+}
+
+/* "forgot password" text */
+.remember-forgot  a {
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.remember-forgot  a:hover{
+    text-decoration: underline;
+}
+
+.btn {
+    width: 100%;
+    height: 45px;
+    background:var(--color-primary);
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: var(--color-background-lighter);
+    font-weight: 600;
+}
+
+.login-register {
+    font-size: .9em;
+    color: var(--color-accent);
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register label a {
+    color:var(--color-primary);
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register label a:hover{
+    text-decoration: underline;
+}
+
+
+
+
+/* Navigation */
+.navigation {
+    position: absolute;
+    top: 25px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px; 
+    font-size: 18px;
+}
+
+.navigation .btn-theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    transition: background 0.3s, color 0.3s;
+}
+
+.navigation .btn-theme-toggle:hover {
+    background: var(--color-primary);
+    color: var(--color-background-lighter);
+}
+
+.navigation .btnLogin-popup {
+    width: 130px;
+    height: 50px;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    outline: none;
+    border-radius: 7px;
+    cursor: pointer;
+    font-size: 1.1em;
+    color: var(--color-primary);
+    font-weight: 500;
+    transition: 0.5s;
+}
+
+.navigation .btnLogin-popup:hover {
+    background: var(--color-dark-variant);
+    color: #141db8;
+}
+
+/* Modes */
+
+.btn-theme-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: 2px solid var(--color-primary);
+    border-radius: 50%;
+    padding: 0.5rem;
+    cursor: pointer;
+    font-size: 1.5rem;
+    color: var(--color-primary);
+    transition: background 0.3s, color 0.3s;
+}
+
+.btn-theme-toggle:hover {
+    background: var(--color-primary);
+    color: var(--color-background-lighter);
+}
+
+/* Light/Dark Mode Styles */
+.dark-mode {
+    --color-text: #e7e8f4;
+    --color-background: #080917;
+    --color-primary: #989ce6;
+    --color-secondary: #191f8a;
+    --color-accent: #4750eb;
+}
+
+body.dark-mode {
+    color: var(--color-text);
+    background-color: var(--color-background);
+}
+
+.dark-mode a {
+    color: var(--color-text);
+}
+
+.dark-mode .material-icons-sharp {
+    color: var(--color-text);
+}
+
+.dark-mode .material-symbols-outlined {
+    color: var(--color-text);
+}
+
+.dark-mode .icon {
+    color: var(--color-text);
+}
+
+.dark-mode .btn {
+    background-color: var(--color-primary);
+    color: var(--color-background-lighter);
+}
+
+.dark-mode .btn:hover {
+    background-color: var(--color-dark-variant);
+    color: #141db8;
+}
+
+.dark-mode .main--content h2,
+.dark-mode .main--content h3 {
+    color: var(--color-primary); /* Ensure these are visible */
+}
+
+.dark-mode .main--content p {
+    color: var(--color-secondary); /* Set appropriate color for dark mode */
+}
+
+.dark-mode .card .material-symbols-outlined {
+    color: var(--color-text); /* Or another color that contrasts with the background */
+}
+
+
+
+
+/* Popup styling */
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: var(--color-dark-variant);
+    color: #721c24;
+    border: 1px solid var(--color-dark);
+    border-radius: 5px;
+    display: none; /* Initially hidden */
+    z-index: 1000; /* Ensure it appears on top */
+}
+
+.popup button {
+    margin-top: 10px;
+    padding: 5px 10px;
+    background-color: var(--color-accent);
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.popup p {
+    color: var(--color-primary);
+    font-weight: 600;
+}
+
+.profile-section {
+    margin-bottom: 0rem;
+  }
+  
+.profile-section  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+  }
+  
+  input[type="text"],
+  input[type="password"],
+  input[type="email"],
+  textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--color-light);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 1rem;
+  }
+  
+/* update button*/
+
+.updatebutton button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-top: 0.5rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: var(--color-secondary);
+  }
+  
+  /* Specific styles for the profile form */
+  .profile-form {
+    background-color: var(--color-background-lighter);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    width: 500px;
+    margin: 2rem auto;
+  }
+  
+  .profile-form h1 {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+
+  /* Style for the password popup container */
+.passwordpopup {
+    display: none; 
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    overflow: hidden;
+}
+
+/* Style for the actual popup content */
+.popup-content {
+    position: fixed; /* Change to fixed to position relative to the viewport */
+    top: 50%; /* Position it 50% from the top */
+    left: 50%; /* Position it 50% from the left */
+    transform: translate(-50%, -50%); /* Center the element */
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    width: 300px; /* Adjust as needed */
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Optional: Styles for popup messages */
+.popup-content p {
+    color: var(--color-primary);
+}
+
+/* Style for the close button */
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-secondary);
+}
+
+.closebtnpopup {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+    color: var(--color-secondary);
+}
+
+/* Style for the icon inside the popup */
+.popup-icon {
+    width: 50px; 
+    height: 50px; 
+    margin-bottom: 10px;
+}
+ 
+.registerbutton button a{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 1rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    float: right;
+    color: white;
+  }
+  
+.registerbutton a:hover {
+    background-color: var(--color-secondary);
+  }
+
+.formbuttons {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* dashboard */
+.main--content {
+    position: grid;
+    background: var(--color-background);
+    width: 100%;
+    padding: 1rem;
+}
+
+/* Header wrapper */
+.header--wrapper {
+    display: flex;
+    width: 25rem;
+    align-items: center;
+    flex-wrap: wrap;
+    background: var(--color-background-lighter);
+    border-radius: 20px;
+    padding: 10px;
+    margin-bottom: 1rem;
+    justify-content: space-between; 
+}
+
+/* Dashboard cards */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem; 
+    margin-top: 1rem;
+}
+
+.card {
+    background: var(--color-background-lighter);
+    padding: 1rem; /* Increased padding for better spacing */
+    border-radius: 15px; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    display: flex; /* Added flex display */
+    flex-direction: column; /* Stacks elements */
+    justify-content: space-between; /* Space out content */
+}
+
+/* Card content */
+.card h3 {
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.card p {
+    color: var(--color-secondary);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .header--wrapper {
+        flex-direction: column; /* Stacks header items vertically */
+        padding: 10px 1rem; /* Reduced padding for smaller screens */
+    }
+
+    .card-container {
+        grid-template-columns: 1fr; /* Single column on small screens */
+    }
+}
+
+/* User list section */
+.user-list-section {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--color-background-lighter);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Allows horizontal scroll if needed */
+}
+
+.user-list-section h2 {
+color: var(--color-text);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    color: var(--color-background-lighter);
+}
+
+table th, table td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-dark);
+    color: var(--color-primary); 
+}
+
+thead {
+    background-color: var(--color-background-lighter); 
+}
+
+thead th {
+    color: var(--color-primary); 
+    border-bottom: 1px solid var(--color-dark); 
+}
+
+.analyticspanel {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--color-background-lighter);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; 
+}
+
+.analyticspanel h2 {
+    color: var(--color-text);
+    }
+.btn-delete  {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-top: 0.2rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+ .btn-delete:hover {
+    background-color: var(--color-secondary);
+}
+
+/* show btn -- user.php */
+
+.btn-show  {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-top: 0.2rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+  
+ .btn-show:hover {
+    background-color: var(--color-secondary);
+}
+
+
+/*submit.html request submission*/
+
+/* Styles for the submission form */
+.request-form {
+    background-color: var(--color-background-lighter);
+    padding: 2rem; 
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+    width: 100px; 
+    margin: 2rem auto;
+    margin-top: 1rem;
+}
+
+
+.request-form label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+.request-form input[type="text"],
+.request-form input[type="email"],
+.request-form select,
+.request-form textarea {
+    width: 100%;
+    padding: 1rem;
+    border: 1px solid var(--color-light);
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 1.25rem;
+    font-size: 1.1rem;
+}
+
+.request-form button[type="submit"] {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 1rem 2rem; /* Kept the button size consistent */
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 1.2rem;
+}
+
+.request-form button[type="submit"]:hover {
+    background-color: var(--color-secondary);
+}
+
+
+.submitbutton button{
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: var(--color-secondary);
+  }
+
+
+#success-message {
+    display: none;
+    color: var(--color-text);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Map style */
+#map {
+    height: 350px; /* Adjusted height slightly */
+    width: 100%;
+    border-radius: 4px;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--box-shadow);
+}
+
+/* Popup content style */
+#success-popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: var(--color-background);
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: var(--box-shadow);
+}
+
+#success-popup .popup-content {
+    text-align: center;
+}
+
+#success-popup .icon-close {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+#map {
+    width: 100%; 
+    height: 400px; 
+    margin-bottom: 20px;
+}
+
+#image-preview {
+    display: none;
+    max-width: 400px;
+    margin-top: 10px;
+    border: 2px solid #ccc; 
+    border-radius: 5px;
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+
+/* Track.html */
+#tracking-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#tracking-table th, #tracking-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+}
+
+#tracking-table th {
+    background-color: #f2f2f2;
+}
+
+.status-container {
+    display: flex;
+    justify-content: center;
+}
+
+.status {
+    padding: 5px;
+    border-radius: 4px;
+    color: white;
+}
+
+.submitted { 
+    background-color: blue; 
+}
+
+.reviewed { 
+    background-color: orange; 
+}
+
+.in-progress { 
+    background-color: yellow; 
+}
+
+.cancelled { 
+    background-color: red; 
+}
+
+.completed { 
+    background-color: green;
+}
+
+
+/* admindashboard pending requests dropdown*/
+
+select {
+    background-color: var(--color-secondary);
+    color: white; 
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px; 
+    font-size: 16px; 
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
+
+#analyticsChart {
+    margin-top: 10px;
+    border-radius: 5px; /* Rounded corners */
+    display: block; /* Display as block for centering */
+    margin-left: auto; /* Center horizontally */
+    margin-right: auto; /* Center horizontally */
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+#analyticsCard {
+    cursor: pointer;
+}
+
+/* admin announcements*/
+.postannouncementbutton button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-top: 0.5rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .postannouncementbutton button:hover {
+    background-color: var(--color-secondary);
+  }
+
+  /* review submissions*/
+.review--submission {
+    margin-top: 2rem;
+    padding: 1rem;
+    background-color: var(--color-background-lighter);
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow-x: auto; /* Allows horizontal scroll if needed */
+}
+
+.review--submission h2 {
+color: var(--color-text);
+}
+
+/* View Request Styles */
+.view-request-container {
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--color-background-lighter);
+    border-radius: 15px;
+    box-shadow: var(--box-shadow);
+    max-width: 800px;
+}
+
+.view-request-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+    color: var(--color-primary);
+}
+
+.view-request-header h2 {
+    margin: 0;
+}
+
+.view-request-details {
+    margin-bottom: 2rem;
+}
+
+.view-request-details p {
+    margin: 0.5rem 0;
+    font-size: 1.1rem;
+    color: var(--color-text);
+}
+
+.view-request-details label {
+    font-weight: bold;
+    color: var(--color-secondary);
+}
+
+.view-request-status {
+    margin-top: 2rem;
+    font-size: 1.1rem;
+    color: var(--color-accent);
+}
+
+.status-button {
+    display: inline-block;
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.status-button:hover {
+    background-color: var(--color-secondary);
+}
+
+.view-updatestatus {
+    justify-content: left;
+}
+
+.back-link {
+    display: inline-block;
+    margin-top: 1rem;
+    text-decoration: none;
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.back-link:hover {
+    color: var(--color-secondary);
+}
+
+.backtoreview a {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-top: 0.5rem;
+    margin-left: 0.5rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .backtoreview a:hover {
+    background-color: var(--color-secondary);
+  }
+
+  
+  .updaterequeststatus button {
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    margin-top: 0.5rem;
+    padding: 0.5rem 2rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .updaterequeststatus button:hover {
+    background-color: var(--color-secondary);
+  }
+
+.statuschange {
+    margin-top: 1rem;
+}
+
+.view-updatestatus{
+    margin-top: 1rem;
+    margin-right: 3rem;
+}
+
+  /* Modal Styles */
+.modal {
+    display: none; /* Ensure the modal is hidden initially */
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    justify-content: center; /* Center horizontally */
+    align-items: center; /* Center vertically */
+    display: flex; /* Use flexbox for centering */
+}
+
+.modal-content {
+    max-width: 90%; /* Make sure it doesn't overflow */
+    max-height: 90%; /* Make sure it doesn't overflow */
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 35px;
+    color: #fff;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.contact-info,
+    .about-container {
+      background-color: var(--color-white);
+      color: var(--text-color-dark);
+    }
+  
+    .contact-info h2,
+    .about-container h1,
+    .about-content h2 {
+      color: var(--heading-color);
+    }
+  
+  /* Contact Info Styles */
+  .contact-info {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    background-color: var(--color-background-lighter);
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: var(--text-color);
+  }
+  
+  .contact-info h2 {
+    font-size: 28px;
+    margin-bottom: 15px;
+    color: var(--heading-color);
+  }
+  
+  .contact-info p {
+    font-size: 16px;
+    margin-bottom: 10px;
+    color: var(--text-color);
+  }
+  
+  .contact-info p strong {
+    color: var(--text-color);
+  }
+  
+  .contact-info p:last-child {
+    margin-top: 20px;
+    font-style: italic;
+  }
+  
+  /* Main Heading Styles */
+  h1 {
+    text-align: center;
+    font-size: 36px;
+    color: var(--heading-color);
+    margin-bottom: 20px;
+  }
+  
+  /* Responsive Styles for Contact Info */
+  @media (max-width: 768px) {
+    .contact-info {
+      padding: 15px;
+    }
+  
+    .contact-info h2 {
+      font-size: 24px;
+    }
+  
+    h1 {
+      font-size: 30px;
+    }
+  }
+  
+  /* About Container Styles */
+  .about-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: var(--bg-color);
+    border-radius: 12px;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Arial', sans-serif;
+  }
+  
+  /* About Container Heading Styles */
+  .about-container h1 {
+    text-align: center;
+    font-size: 36px;
+    color: var(--heading-color-h2);
+    margin-bottom: 20px;
+  }
+  
+  /* About Content Styles */
+  .about-content {
+    line-height: 1.8;
+    color: var(--text-color);
+  }
+  
+  .about-content h2 {
+    text-align: center;
+    margin-top: 20px;
+    font-size: 36px;
+    color: var(--heading-color-h2);
+  }
+  
+  .about-content p {
+    font-size: 16px;
+    margin-bottom: 15px;
+    color: var(--text-color);
+  }
+  
+  /* Responsive Styles for About Container */
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 20px;
+    }
+  
+    .about-container h1 {
+      font-size: 30px;
+    }
+  
+    .about-content h2 {
+      font-size: 30px;
+    }
+  }
+  

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"  rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <title>LGU User Dashboard</title>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Side bar-->
+        <aside id="sidebar">
+            <div class="toggle">
+                <div class="logo">
+                    <img src="images/iconx.png">
+                    <h2>Welcome</h2>
+                </div>
+                <div class="close" id="toggle-btn">
+                    <span class="material-icons-sharp">
+                        menu_open
+                    </span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="Home.php">
+                    <span class="material-icons-sharp">
+                        home
+                    </span>
+                    <h3>Home</h3>
+                </a>
+                <a href="User.php">
+                    <span class="material-icons-sharp">
+                        person_outline
+                    </span>
+                    <h3>User</h3>
+                </a>
+                <a href="Announcement.html">
+                    <span class="material-icons-sharp">
+                        campaign
+                    </span>
+                    <h3>Announcement</h3>
+                </a>
+                <a href="Submit.php">
+                    <span class="material-symbols-outlined">
+                        rate_review
+                    </span>         
+                    <h3>Submit a Request or Feedback</h3>
+                </a>
+                <a href="track.php">
+                    <span class="material-symbols-outlined">
+                        query_stats
+                    </span>
+                    <h3>Track</h3>
+                </a>
+                <a href="Contact.html">
+                    <span class="material-symbols-outlined">
+                        call
+                    </span>
+                    <h3>Contact Us</h3>
+                </a>
+                <a href="About.html"  class="active">
+                    <span class="material-symbols-outlined">
+                        info
+                    </span>
+                    <h3>About Us</h3>
+                </a>
+            </div>
+        </aside>
+        <!--Sidebar end-->
+
+
+        <!--Main content per page-->
+        <main>
+            <h1>About Us</h1>
+            <div class="about-container">
+                <h1>About Us</h1>
+                <div class="about-content">
+                  
+                  <p>Welcome to the Citizen Request and Feedback Management System! Our platform is designed to streamline communication between citizens and local authorities by providing a real-time request tracking system, feedback analysis, and an automated chatbot to handle Frequently Asked Questions (FAQ). With our system, we ensure that every request is addressed efficiently, feedback is analyzed for continuous improvement, and citizens receive quick answers to their inquiries. Our goal is to enhance public service through transparent, accessible, and responsive tools.</p>
+                  <h2>Our Mission</h2>
+                  <p>Our mission is to deliver high-quality solutions that help our clients achieve their goals. We are committed to innovation, integrity, and customer satisfaction.</p>
+                  <h2>Why Choose Us</h2>
+                  <p>We prioritize our customers' needs and provide personalized services that are tailored to meet their specific requirements. Our team is always ready to assist you and provide the best solutions.</p>
+                </div>
+              </div>
+              
+        </main>
+        <nav class="navigation">
+            <button id="theme-toggle" class="btn-theme-toggle">
+                <span class="material-symbols-outlined">light_mode</span>
+            </button>
+
+            <button class="btnLogin-popup"><a href="logout.php">Logout</button>
+        </nav>
+    </div>
+
+    <script src="script.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

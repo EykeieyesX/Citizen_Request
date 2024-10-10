@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot FAQ</title>
+    <link rel="stylesheet" href="styles.css"> <!-- Link to the external CSS file -->
+</head>
+<body>
+
+<!-- Chatbot logo -->
+<img id="chatbot-logo" src="chatbot.png" alt="Chatbot Logo" width="60" height="60">
+
+<!-- Chatbot container -->
+<div id="chatbot-container" style="display: none;">
+    <div id="faq-informations">
+        <h3>FAQ Information</h3>
+        <ul>
+            <li class="faq-question" onclick="handleFAQClick(this)">How do I submit a request or feedback?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>You can submit a request or feedback through our online portal, mobile app, or by calling our dedicated hotline.</li>
+                </ul>
+            </div>
+
+            <li class="faq-question" onclick="handleFAQClick(this)">Who can use this system?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>This system is open to all residents of our municipality. Anyone can submit requests or feedback, whether you're a long-time resident or new to the area.</li>
+                </ul>
+            </div>
+
+            <li class="faq-question" onclick="handleFAQClick(this)">What is the Citizen Request and Feedback Management System?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>The Citizen Request and Feedback Management System is a digital platform that allows citizens to submit requests, report issues, and provide feedback to their local government or municipality.</li>
+                </ul>
+            </div>
+
+            <li class="faq-question" onclick="handleFAQClick(this)">Is there a cost to use the system?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>No, the Citizen Request and Feedback Management System is a free service provided by your local government to improve community engagement and service delivery.</li>
+                </ul>
+            </div>
+
+            <li class="faq-question" onclick="handleFAQClick(this)">What types of requests can I submit?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>Reporting potholes or road damage</li>
+                    <li>Requesting garbage collection</li>
+                    <li>Reporting streetlight outages</li>
+                    <li>Noise complaints</li>
+                    <li>Graffiti removal requests</li>
+                    <li>Park maintenance issues</li>
+                    <li>Suggestions for community improvement</li>
+                </ul>
+            </div>
+
+            <li class="faq-question" onclick="handleFAQClick(this)">Do I need to create an account to submit a request?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>While creating an account is recommended for easier tracking of your requests.</li>
+                </ul>
+            </div>
+
+            <li class="faq-question" onclick="handleFAQClick(this)">How long does it take for my request to be processed?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>Processing times vary depending on the nature and complexity of the request. Urgent matters are prioritized.</li>
+                </ul>
+            </div>
+
+            <li class="faq-question" onclick="handleFAQClick(this)">What happens if my request can't be resolved?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>If a request cannot be resolved for any reason, you will be notified with an explanation. Alternative solutions may also be provided.</li>
+                </ul>
+            </div>
+
+            <li class="faq-question" onclick="handleFAQClick(this)">How is my personal information protected?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>We take your privacy seriously. All personal information is encrypted and stored securely.</li>
+                </ul>
+            </div>
+
+            <li class="faq-question" onclick="handleFAQClick(this)">Can I update or delete my personal information?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>Yes, if you have an account, you can update your personal information at any time.</li>
+                </ul>
+            </div>
+
+            <li class="faq-question" onclick="handleFAQClick(this)">What if I need help using the system?</li>
+            <div class="faq-answer" style="display: none;">
+                <ul>
+                    <li>If you need assistance, you can refer to our user guide available on the website.</li>
+                </ul>
+            </div>
+
+        </ul>
+    </div>
+    <footer class="chatbot-footer">
+        Welcome to FAQ chatbot of CRFMS!
+    </footer>
+    
+    <div id="messages-container" style="max-height: 400px; overflow-y: auto;"> <!-- Added styles for scrolling -->
+        <div class="bot-message">Hello I'm FAQ bot!<br> How can I help you?</div>
+    </div>
+    
+
+    <!-- Input box and send/reset button container -->
+    <div id="input-container">
+        <input type="text" id="user-input" placeholder="Type your message...">
+        <img id="send-button" src="send.png" alt="Send Button"> <!-- Send button image -->
+        <img id="reset-button" src="reset.png" alt="Reset Button" style="cursor: pointer; width: 40px; height: 40px;"> <!-- Reset button icon -->
+    </div>
+</div>
+
+<script>
+// Fetch the FAQs from the PHP script
+let faqs = [];
+fetch('chatbot.php')
+    .then(response => response.json())
+    .then(data => {
+        faqs = data; // Store the FAQs fetched from the PHP script
+    });
+
+const chatbotContainer = document.getElementById('chatbot-container');
+const userInput = document.getElementById('user-input');
+const chatbotLogo = document.getElementById('chatbot-logo');
+const sendButton = document.getElementById('send-button');
+const resetButton = document.getElementById('reset-button');
+
+// Show the chatbot when the logo is clicked
+chatbotLogo.addEventListener('click', () => {
+    chatbotContainer.style.display = chatbotContainer.style.display === 'none' || chatbotContainer.style.display === '' ? 'block' : 'none';
+});
+
+// Function to handle FAQ question clicks
+function handleFAQClick(element) {
+    // Show the chatbot if it's hidden
+    if (chatbotContainer.style.display === 'none') {
+        chatbotContainer.style.display = 'block';
+    }
+
+    // Get the corresponding question and answer
+    const question = element.innerText;
+    const answer = element.nextElementSibling.innerText;
+
+    // Display the question as user message and answer as bot message
+    displayResponse(question, true); // User message
+    displayResponse(answer, false); // Bot message
+}
+
+// Function to handle user input and find matching FAQs
+function handleUserInput(input) {
+    for (let faq of faqs) {
+        if (input.toLowerCase() === faq.question.toLowerCase()) {
+            return faq.answer;
+        }
+    }
+    return 'Make sure that you have entered a valid question. <br>Here are some suggestions:<br>' + getSuggestedQuestions();
+}
+
+// Function to display the chatbot's responses
+function displayResponse(response, isUser) {
+    const messageDiv = document.createElement('div');
+    messageDiv.className = isUser ? 'user-message' : 'bot-message';
+    messageDiv.innerHTML = response; // Changed to set directly to the response
+    document.getElementById('messages-container').appendChild(messageDiv); // Append to the new messages container
+    scrollToBottom(); // Scroll to the bottom after appending
+}
+
+// Function to scroll to the bottom of the messages container
+function scrollToBottom() {
+    const messagesContainer = document.getElementById('messages-container');
+    messagesContainer.scrollTop = messagesContainer.scrollHeight;
+}
+
+// Function to get suggested questions
+function getSuggestedQuestions() {
+    const shuffledFAQs = faqs.sort(() => 0.5 - Math.random()).slice(0, 3);
+    const suggestionHTML = shuffledFAQs.map(faq => 
+        `<span class="suggestion-link" onclick="handleSuggestion('${faq.question}')">${faq.question}</span>`).join('<br>');
+    return suggestionHTML;
+}
+
+// Function to handle suggestion clicks
+function handleSuggestion(question) {
+    const answer = handleUserInput(question);
+    displayResponse(question, true); // User message
+    displayResponse(answer, false); // Bot message
+}
+
+// Function to send a message (used by both Enter key and Send button)
+function sendMessage() {
+    const input = userInput.value.trim();
+    if (input !== '') {
+        displayResponse(input, true); // User message
+        const response = handleUserInput(input);
+        displayResponse(response, false); // Bot message
+        userInput.value = ''; // Clear the input box
+    }
+}
+
+// Function to reset the chat
+function resetChat() {
+    document.getElementById('messages-container').innerHTML = '<div class="bot-message">Hello 👋 I\'m CRFMS bot. How can I help you?</div>';
+}
+
+// Event listeners
+sendButton.addEventListener('click', sendMessage);
+userInput.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+});
+resetButton.addEventListener('click', resetChat);
+</script>
+</body>
+</html>
