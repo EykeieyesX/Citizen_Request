@@ -1,0 +1,227 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: transparent;
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Container for all content */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+/* FAQ Container - Positioned at the top */
+#faq-informations {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto 20px;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    order: -1; /* Ensures FAQ is at the top */
+}
+
+/* Header Styling for FAQ */
+#faq-informations h3 {
+    text-align: center;
+    color: #2c3e50;
+    margin-bottom: 10px;
+    font-size: 28px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* FAQ Question Styling */
+.faq-question {
+    list-style-type: none;
+    margin: 15px 0;
+    padding: 15px 20px;
+    cursor: pointer;
+    background-color: #3498db;
+    color: #fff;
+    border-radius: 4px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.faq-question:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+}
+
+/* FAQ Answer Styling */
+.faq-answer {
+    display: none;
+    margin-top: 10px;
+    background-color: #f1f8ff;
+    padding: 15px 20px;
+    border-left: 4px solid #3498db;
+    border-radius: 0 4px 4px 0;
+}
+
+.faq-answer ul {
+    list-style-type: none; /* Remove bullets */
+    margin-left: 0; /* Remove left margin */
+}
+
+.faq-answer ul li {
+    margin: 10px 0;
+    line-height: 1.8;
+    color: #34495e;
+}
+
+/* Toggle Function for FAQ */
+.faq-answer.active {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Chatbot container */
+#chatbot-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Keep as is for slight transparency */
+    border-radius: 15px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    padding: 20px;
+    width: 350px;
+    max-height: 500px;
+    overflow-y: auto;
+    display: none; /* Set to none initially */
+    position: fixed; /* Position fixed for bottom right placement */
+    bottom: 80px; /* Adjust as needed to position above the logo */
+    right: 30px; /* Distance from the right edge */
+    z-index: 1000; /* Ensure it's on top of other elements */
+}
+
+/* Logo for chatbot */
+#chatbot-logo {
+    position: fixed; /* Fixed positioning */
+    bottom: 30px; /* Distance from the bottom */
+    right: 30px; /* Distance from the right */
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+#chatbot-logo:hover {
+    transform: scale(1.1); /* Slight scaling on hover */
+}
+
+/* Chatbot message styles */
+.user-message, .bot-message {
+    border-radius: 20px;
+    padding: 8px 12px; /* Reduced padding */
+    word-wrap: break-word; /* Allows long words to wrap to the next line */
+    margin: 5px 0; /* Add a little margin for spacing */
+    max-width: 75%; /* Set a maximum width to prevent messages from stretching too far */
+}
+
+/* User message styles */
+.user-message {
+    background-color: #3498db; /* Blue background for user messages */
+    color: white;
+    align-self: flex-end; /* Align user messages to the right */
+}
+
+/* Bot message styles */
+.bot-message {
+    background-color: #f1f8ff; /* Light background for bot messages */
+    color: black;
+    align-self: flex-start; /* Align bot messages to the left */
+}
+
+/* Ensure the messages container doesn't grow too large */
+#messages-container {
+    max-height: 400px; /* Set maximum height for the container */
+    overflow-y: auto; /* Allow scrolling when messages exceed the height */
+    display: flex;
+    flex-direction: column; /* Arrange messages vertically */
+}
+
+
+/* Adjustable user message container */
+#bot-messages-container {
+    display: flex;
+    flex-direction: column;
+    max-height: 400px;
+    overflow-y: auto;
+    padding-right: 10px; /* Space for scrollbar */
+}
+
+/* Input container for input box and send button */
+#input-container {
+    display: flex;
+    align-items: center;
+    padding-top: 15px;
+    border-top: 1px solid #e0e0e0;
+    margin-top: 15px;
+}
+
+#user-input {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border-radius: 25px;
+    border: 1px solid #bdc3c7;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+}
+
+#user-input:focus {
+    outline: none;
+    border-color: #3498db;
+}
+
+#send-button {
+    background: url('send.png') no-repeat center center;
+    background-size: 20px 20px;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    margin-left: 10px;
+    transition: background-color 0.3s ease;
+}
+
+#send-button:hover {
+    background-color: #2980b9;
+}
+
+/* Footer styling */
+.chatbot-footer {
+    background-color: #2c3e509a;
+    border-radius: 10px;
+    color: #ecf0f1;
+    text-align: center;
+    padding: 15px 0;
+    font-weight: 600;
+    margin-top: auto;
+}
+iframe {
+    width: 100%; /* Adjust based on your layout */
+    height: 500px; /* Adjust as needed */
+    border: none; /* Removes default border */
+    display: block; /* Ensures it behaves like a block element */
+}

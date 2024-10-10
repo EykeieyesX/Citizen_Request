@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp"  rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css">
+    <title>LGU Admin Dashboard</title>
+</head>
+<body>
+    <div class="container">
+        <!-- Side bar-->
+        <aside id="sidebar">
+            <div class="toggle">
+                <div class="logo">
+                    <a href="AdminLogin.html">
+                    <img src="images/qcsdicon.png"></a>
+                    <h2>CRFM</h2>
+                </div>
+                <div class="close" id="toggle-btn">
+                    <span class="material-icons-sharp">menu_open</span>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <a href="index.html" class="active">
+                    <span class="material-symbols-outlined">
+                        login
+                    </span>
+                    <h3>User Website</h3>
+                </a>
+            </div>
+        </aside>
+        <!--Sidebar end-->
+
+        <!--Main content per page-->
+        <main>
+            <h1>Admin Panel</h1>
+        </main>
+
+        <!-- Light/Dark Mode Toggle Button -->
+        <nav class="navigation">
+            <button id="theme-toggle" class="btn-theme-toggle">
+                <span class="material-symbols-outlined">light_mode</span>
+            </button>
+
+            <!-- Admin Signup Button -->
+            <button class="btnLogin-popup">Sign Up</button>
+        </nav>
+    </div>
+
+    <!-- Admin Signup Form --> 
+    <div class="wrapper">
+        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+        <div class="form-box login">
+            <h2>Admin Login</h2>
+            <form action="admin_login.php" method="post">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="remember-forgot">
+                    <label><input type="checkbox">Remember me</label>
+                    <a href="#">Forgot Password?</a>
+                </div>
+                <button type="submit" class="btn">Login</button>
+                <div class="login-register">
+                    <label>Don't have an account? <a href="#" class="register-link">Register</a></label>
+                </div>
+            </form>
+        </div>
+        <div class="form-box register">
+            <h2>Admin Registration</h2>
+            <form action="admin_register.php" method="post">
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="username" required>
+                    <label>Username</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="firstname" required>
+                    <label>First Name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="person"></ion-icon></span>
+                    <input type="text" name="lastname" required>
+                    <label>Last Name</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="home"></ion-icon></span>
+                    <input type="text" name="barangay" required>
+                    <label>Barangay</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                    <input type="password" name="password" required>
+                    <label>Password</label>
+                </div>
+                <div class="input-box">
+                    <span class="icon"><ion-icon name="key"></ion-icon></span>
+                    <input type="text" name="admin_code" required>
+                    <label>Admin Code</label>
+                </div>
+                <button type="submit" class="btn">Register</button>
+                <div class="login-register">
+                    <label>Already have an account? <a href="#" class="login-link">Login</a></label>
+                </div>
+                
+            </form>
+           
+        </div>
+    </div>
+
+
+    <!-- Error Popups -->
+    <div class="popup-content" id="invalid-code-popup" style="display:none">
+        <span class="closebtnpopup" onclick="closePopup('invalid-code-popup')">&times;</span>
+        <p>Invalid Admin Code. Please try again.</p>
+    </div>
+
+    <div class="popup-content" id="username-taken-popup" style="display:none">
+        <span class="closebtnpopup" onclick="closePopup('username-taken-popup')">&times;</span>
+        <p>Username is already in use.</p>
+    </div>
+    
+    <!--admin register success-->
+    <div id="admin-register-success-popup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close">&times;</span>
+            <p>Admin registration successful!</p>
+        </div>
+    </div>
+
+    <!-- admin user Not Found Popup -->
+    <div id="admin-not-found-popup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closeUserNotFoundPopup()">×</span>
+            <p>Admin User not found. Please check your username and try again.</p>
+        </div>
+    </div>
+
+    <!-- admin password Error Popup -->
+    <div id="admin-password-error-popup" class="popup">
+        <div class="popup-content">
+            <span class="popup-close" onclick="closePasswordErrorPopup()">×</span>
+            <p>Incorrect Password. Please try again.</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+</html>
